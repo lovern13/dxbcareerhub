@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DubaiCareerHub | Find Your Dream Job in Dubai</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #4f46e5;
+            --primary-light: #818cf8;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --gray: #94a3b8;
+            --success: #10b981;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f1f5f9;
+            color: var(--dark);
+            min-height: 100vh;
+            position: relative;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 1rem 2rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .logo i {
+            color: #fbbf24;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-links a:hover {
+            color: #fbbf24;
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -4px;
+            left: 0;
+            background-color: #fbbf24;
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+        
+        .auth-buttons {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .btn {
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 1px solid white;
+            color: white;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+        }
+        
+        .btn-primary {
+            background: white;
+            color: var(--primary);
+        }
+        
+        .btn-primary:hover {
+            background: #e2e8f0;
+        }
+        
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(rgba(79, 70, 229, 0.9), rgba(79, 70, 229, 0.8)), url('https://images.unsplash.com/photo-1512453979798-5ea266f8880c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=2070&q=80') no-repeat center center/cover;
+            height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            padding: 0 1rem;
+        }
+        
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            animation: fadeInDown 1s ease;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin-bottom: 2rem;
+            animation: fadeInUp 1s ease;
+        }
+        
+        /* Search Bar */
+        .search-container {
+            max-width: 800px;
+            width: 100%;
+            margin: 0 auto;
+            position: relative;
+            animation: fadeIn 1.5s ease;
+        }
+        
+        .search-bar {
+            display: flex;
+            background: white;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .search-bar input {
+            flex: 1;
+            padding: 1rem;
+            border: none;
+            outline: none;
+            font-size: 1rem;
+        }
+        
+        .search-bar button {
+            padding: 0 1.5rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .search-bar button:hover {
+            background: #4338ca;
+        }
+        
+        /* Main Content */
+        .container {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+        
+        .section-title {
+            font-size: 2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 4px;
+            background: var(--primary);
+            bottom: -8px;
+            left: 0;
+            border-radius: 2px;
+        }
+        
+        /* Job Grid */
+        .job-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .job-card {
+            background: white;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .job-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+        }
+        
+        .job-card .job-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .job-card .company {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+        
+        .job-card .company-logo {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: #e2e8f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--primary);
+            font-weight: bold;
+            font-size: 1.2rem;
+        }
+        
+        .job-card .company-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 0.2rem;
+        }
+        
+        .job-card .company-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .job-card .job-details {
+            padding: 1.5rem;
+        }
+        
+        .job-card .job-title {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+        
+        .job-card .job-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .job-card .job-meta span {
+            background: #e2e8f0;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.8rem;
+            color: var(--dark);
+        }
+        
+        .job-card .job-description {
+            color: #64748b;
+            margin-bottom: 1.5rem;
+            font-size: 0.9rem;
+            line-height: 1.5;
+        }
+        
+        .job-card .apply-btn {
+            width: 100%;
+            padding: 0.75rem;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 0.25rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .job-card .apply-btn:hover {
+            background: #4338ca;
+        }
+        
+        /* Featured Jobs */
+        .featured-badge {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background: #fbbf24;
+            color: #78350f;
+            padding: 0.25rem 0.5rem;
+            border-radius: 0.25rem;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+        
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .modal-content {
+            background: white;
+            border-radius: 0.5rem;
+            width: 90%;
+            max-width: 500px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            animation: slideInDown 0.3s ease;
+        }
+        
+        .modal-header {
+            padding: 1.5rem;
+            border-bottom: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .modal-header h2 {
+            font-size: 1.5rem;
+            color: var(--dark);
+        }
+        
+        .close-btn {
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: var(--gray);
+            transition: all 0.3s ease;
+        }
+        
+        .close-btn:hover {
+            color: var(--dark);
+        }
+        
+        .modal-body {
+            padding: 1.5rem;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: var(--dark);
+        }
+        
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 0.25rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+        
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            border-color: var(--primary);
+            outline: none;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.2);
+        }
+        
+        .form-group textarea {
+            min-height: 100px;
+            resize: vertical;
+        }
+        
+        .file-upload {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem;
+            border: 2px dashed #e2e8f0;
+            border-radius: 0.25rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        .file-upload:hover {
+            border-color: var(--primary);
+        }
+        
+        .file-upload i {
+            font-size: 2rem;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .file-upload p {
+            color: var(--gray);
+            text-align: center;
+        }
+        
+        .file-upload input {
+            display: none;
+        }
+        
+        .modal-footer {
+            padding: 1.5rem;
+            border-top: 1px solid #e2e8f0;
+            display: flex;
+            justify-content: flex-end;
+            gap: 1rem;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 3rem 2rem 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+        }
+        
+        .footer-column h3 {
+            font-size: 1.2rem;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .footer-column h3::after {
+            content: '';
+            position: absolute;
+            width: 50%;
+            height: 2px;
+            background: var(--primary);
+            bottom: -8px;
+            left: 0;
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column ul li {
+            margin-bottom: 0.75rem;
+        }
+        
+        .footer-column ul li a {
+            color: var(--gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+        
+        .footer-column ul li a:hover {
+            color: white;
+            padding-left: 0.5rem;
+        }
+        
+        .social-links {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        .social-links a {
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+        
+        .social-links a:hover {
+            background: var(--primary);
+            transform: translateY(-3px);
+        }
+        
+        .copyright {
+            text-align: center;
+            margin-top: 3rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .creator-credit {
+            text-align: center;
+            margin-top: 1rem;
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+        
+        .license-btn {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white;
+            padding: 0.5rem 1rem;
+            border-radius: 0.375rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            z-index: 99;
+        }
+        
+        .license-btn:hover {
+            background: #4338ca;
+            transform: translateY(-2px);
+        }
+        
+        /* License Modal */
+        .license-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+            animation: fadeIn 0.3s ease;
+        }
+        
+        .license-content {
+            background: white;
+            border-radius: 0.5rem;
+            width: 90%;
+            max-width: 800px;
+            max-height: 80vh;
+            overflow-y: auto;
+            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+            animation: slideInDown 0.3s ease;
+            padding: 2rem;
+        }
+        
+        .license-content pre {
+            white-space: pre-wrap;
+            font-family: monospace;
+            font-size: 0.9rem;
+            line-height: 1.5;
+            background: #f8fafc;
+            padding: 1rem;
+            border-radius: 0.25rem;
+            overflow-x: auto;
+        }
+        
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes slideInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .navbar {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .nav-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+            
+            .hero h1 {
+                font-size: 2rem;
+            }
+            
+            .hero p {
+                font-size: 1rem;
+            }
+            
+            .job-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <i class="fas fa-briefcase"></i>
+                <span>DubaiCareerHub</span>
+            </div>
+            <div class="nav-links">
+                <a href="#">Home</a>
+                <a href="#jobs">Jobs</a>
+                <a href="#">Companies</a>
+                <a href="#">About</a>
+                <div class="auth-buttons">
+                    <button class="btn btn-outline" id="loginBtn">Login</button>
+                    <button class="btn btn-primary" id="registerBtn">Register</button>
+                </div>
+            </div>
+        </div>
+    </header>
+    
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1>Find Your Dream Job in Dubai</h1>
+        <p>Discover exciting career opportunities in the heart of the UAE. Join thousands of professionals building their careers in Dubai's dynamic job market.</p>
+        <div class="search-container">
+            <div class="search-bar">
+                <input type="text" placeholder="Job title, keywords, or company">
+                <button><i class="fas fa-search"></i> Search</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Main Content -->
+    <div class="container">
+        <h2 class="section-title" id="jobs">Featured Jobs in Dubai</h2>
+        <div class="job-grid">
+            <!-- Job Card 1 -->
+            <div class="job-card">
+                <span class="featured-badge">Featured</span>
+                <div class="job-header">
+                    <div class="company">
+                        <div class="company-logo">EC</div>
+                        <div class="company-info">
+                            <h3>Emirates Group</h3>
+                            <p>Dubai, UAE</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="job-details">
+                    <h3 class="job-title">Senior Frontend Developer</h3>
+                    <div class="job-meta">
+                        <span>Full-time</span>
+                        <span>On-site</span>
+                        <span>25,000 AED - 35,000 AED</span>
+                    </div>
+                    <p class="job-description">Join our digital transformation team to build cutting-edge web applications for Emirates' global operations.</p>
+                    <button class="apply-btn" onclick="openApplyModal('Senior Frontend Developer at Emirates Group')">Apply Now</button>
+                </div>
+            </div>
+            
+            <!-- Job Card 2 -->
+            <div class="job-card">
+                <div class="job-header">
+                    <div class="company">
+                        <div class="company-logo">EA</div>
+                        <div class="company-info">
+                            <h3>Emaar Properties</h3>
+                            <p>Dubai, UAE</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="job-details">
+                    <h3 class="job-title">Backend Engineer</h3>
+                    <div class="job-meta">
+                        <span>Full-time</span>
+                        <span>Hybrid</span>
+                        <span>22,000 AED - 30,000 AED</span>
+                    </div>
+                    <p class="job-description">Develop scalable backend systems for Emaar's digital platforms serving millions of customers.</p>
+                    <button class="apply-btn" onclick="openApplyModal('Backend Engineer at Emaar Properties')">Apply Now</button>
+                </div>
+            </div>
+            
+            <!-- Job Card 3 -->
+            <div class="job-card">
+                <span class="featured-badge">Featured</span>
+                <div class="job-header">
+                    <div class="company">
+                        <div class="company-logo">DP</div>
+                        <div class="company-info">
+                            <h3>DP World</h3>
+                            <p>Dubai, UAE</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="job-details">
+                    <h3 class="job-title">UX Designer</h3>
+                    <div class="job-meta">
+                        <span>Contract</span>
+                        <span>On-site</span>
+                        <span>18,000 AED - 25,000 AED</span>
+                    </div>
+                    <p class="job-description">Design intuitive user experiences for our global logistics and supply chain platforms.</p>
+                    <button class="apply-btn" onclick="openApplyModal('UX Designer at DP World')">Apply Now</button>
+                </div>
+            </div>
+            
+            <!-- Job Card 4 -->
+            <div class="job-card">
+                <div class="job-header">
+                    <div class="company">
+                        <div class="company-logo">EN</div>
+                        <div class="company-info">
+                            <h3>ENOC</h3>
+                            <p>Dubai, UAE</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="job-details">
+                    <h3 class="job-title">Data Scientist</h3>
+                    <div class="job-meta">
+                        <span>Full-time</span>
+                        <span>Remote</span>
+                        <span>28,000 AED - 38,000 AED</span>
+                    </div>
+                    <p class="job-description">Apply advanced analytics to optimize energy distribution and retail operations across the UAE.</p>
+                    <button class="apply-btn" onclick="openApplyModal('Data Scientist at ENOC')">Apply Now</button>
+                </div>
+            </div>
+            
+            <!-- Job Card 5 -->
+            <div class="job-card">
+                <div class="job-header">
+                    <div class="company">
+                        <div class="company-logo">CB</div>
+                        <div class="company-info">
+                            <h3>Commercial Bank of Dubai</h3>
+                            <p>Dubai, UAE</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="job-details">
+                    <h3 class="job-title">Mobile Developer</h3>
+                    <div class="job-meta">
+                        <span>Full-time</span>
+                        <span>On-site</span>
+                        <span>23,000 AED - 32,000 AED</span>
+                    </div>
+                    <p class="job-description">Build secure mobile banking applications for CBD's digital transformation initiative.</p>
+                    <button class="apply-btn" onclick="openApplyModal('Mobile Developer at Commercial Bank of Dubai')">Apply Now</button>
+                </div>
+            </div>
+            
+            <!-- Job Card 6 -->
+            <div class="job-card">
+                <span class="featured-badge">Featured</span>
+                <div class="job-header">
+                    <div class="company">
+                        <div class="company-logo">DT</div>
+                        <div class="company-info">
+                            <h3>Dubai Tourism</h3>
+                            <p>Dubai, UAE</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="job-details">
+                    <h3 class="job-title">Digital Marketing Specialist</h3>
+                    <div class="job-meta">
+                        <span>Full-time</span>
+                        <span>Hybrid</span>
+                        <span>20,000 AED - 28,000 AED</span>
+                    </div>
+                    <p class="job-description">Lead digital campaigns to promote Dubai as the world's premier tourism destination.</p>
+                    <button class="apply-btn" onclick="openApplyModal('Digital Marketing Specialist at Dubai Tourism')">Apply Now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Login Modal -->
+    <div class="modal" id="loginModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Login to Your Account</h2>
+                <button class="close-btn" onclick="closeModal('loginModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="loginEmail">Email</label>
+                    <input type="email" id="loginEmail" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Password</label>
+                    <input type="password" id="loginPassword" placeholder="Enter your password">
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" style="width: 100%;">Login</button>
+                </div>
+                <p style="text-align: center; margin-top: 1rem;">Don't have an account? <a href="#" style="color: var(--primary);" onclick="switchToRegister()">Register</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Register Modal -->
+    <div class="modal" id="registerModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2>Create an Account</h2>
+                <button class="close-btn" onclick="closeModal('registerModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="registerName">Full Name</label>
+                    <input type="text" id="registerName" placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="registerEmail">Email</label>
+                    <input type="email" id="registerEmail" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Password</label>
+                    <input type="password" id="registerPassword" placeholder="Create a password">
+                </div>
+                <div class="form-group">
+                    <label for="registerConfirm">Confirm Password</label>
+                    <input type="password" id="registerConfirm" placeholder="Confirm your password">
+                </div>
+                <div class="form-group">
+                    <label>Account Type</label>
+                    <select>
+                        <option value="job-seeker">Job Seeker</option>
+                        <option value="employer">Employer</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <button class="btn btn-primary" style="width: 100%;">Register</button>
+                </div>
+                <p style="text-align: center; margin-top: 1rem;">Already have an account? <a href="#" style="color: var(--primary);" onclick="switchToLogin()">Login</a></p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Apply Modal -->
+    <div class="modal" id="applyModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="applyJobTitle">Apply for Job</h2>
+                <button class="close-btn" onclick="closeModal('applyModal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group">
+                    <label for="applicantName">Full Name</label>
+                    <input type="text" id="applicantName" placeholder="Enter your full name">
+                </div>
+                <div class="form-group">
+                    <label for="applicantEmail">Email</label>
+                    <input type="email" id="applicantEmail" placeholder="Enter your email">
+                </div>
+                <div class="form-group">
+                    <label for="applicantPhone">Phone Number</label>
+                    <input type="tel" id="applicantPhone" placeholder="Enter your phone number">
+                </div>
+                <div class="form-group">
+                    <label for="applicantResume">Upload Resume</label>
+                    <div class="file-upload">
+                        <input type="file" id="applicantResume" accept=".pdf,.doc,.docx">
+                        <i class="fas fa-cloud-upload-alt"></i>
+                        <p>Click to upload or drag and drop</p>
+                        <p>PDF, DOC, DOCX (Max. 5MB)</p>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="applicantCover">Cover Letter (Optional)</label>
+                    <textarea id="applicantCover" placeholder="Write a cover letter explaining why you're a good fit for this position"></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-outline" style="border-color: var(--gray); color: var(--gray);" onclick="closeModal('applyModal')">Cancel</button>
+                <button class="btn btn-primary">Submit Application</button>
+            </div>
+        </div>
+    </div>
+    
+    <!-- License Modal -->
+    <div class="license-modal" id="licenseModal">
+        <div class="license-content">
+            <div class="modal-header">
+                <h2>MIT License</h2>
+                <button class="close-btn" onclick="closeModal('licenseModal')">&times;</button>
+            </div>
+            <pre>
+Copyright (c) 2025 Lovevish Ramchurun (Student ID: 35501701)
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+            </pre>
+        </div>
+    </div>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-column">
+                <h3>DubaiCareerHub</h3>
+                <p>Connecting professionals with Dubai's top employers. Find your perfect career opportunity in the UAE's most dynamic job market.</p>
+                <div class="social-links">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                </div>
+            </div>
+            <div class="footer-column">
+                <h3>For Job Seekers</h3>
+                <ul>
+                    <li><a href="#">Browse Dubai Jobs</a></li>
+                    <li><a href="#">Create Profile</a></li>
+                    <li><a href="#">Job Alerts</a></li>
+                    <li><a href="#">Career Advice</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>For Employers</h3>
+                <ul>
+                    <li><a href="#">Post a Job</a></li>
+                    <li><a href="#">Browse Candidates</a></li>
+                    <li><a href="#">Pricing Plans</a></li>
+                    <li><a href="#">Recruitment Solutions</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Company</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Contact</a></li>
+                    <li><a href="#">Privacy Policy</a></li>
+                    <li><a href="#">Terms of Service</a></li>
+                </ul>
+            </div>
+        </div>
+        <div class="creator-credit">
+            Created by Lovevish Ramchurun (Student ID: 35501701)
+        </div>
+        <div class="copyright">
+            &copy; 2025 DubaiCareerHub. All rights reserved.
+        </div>
+    </footer>
+    
+    <!-- License Button -->
+    <button class="license-btn" onclick="openModal('licenseModal')">
+        <i class="fas fa-balance-scale"></i> License
+    </button>
+    
+    <script>
+        // Modal Functions
+        function openModal(modalId) {
+            document.getElementById(modalId).style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+        
+        function closeModal(modalId) {
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+        
+        function openApplyModal(jobTitle) {
+            document.getElementById('applyJobTitle').textContent = 'Apply for ' + jobTitle;
+            openModal('applyModal');
+        }
+        
+        function switchToRegister() {
+            closeModal('loginModal');
+            openModal('registerModal');
+        }
+        
+        function switchToLogin() {
+            closeModal('registerModal');
+            openModal('loginModal');
+        }
+        
+        // Event Listeners
+		document.getElementById('loginBtn').addEventListener('click', function() {
+            openModal('loginModal');
+        });
+        
+        document.getElementById('registerBtn').addEventListener('click', function() {
+            openModal('registerModal');
+        });
+        
+        // Close modal when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal')) {
+                closeModal(event.target.id);
+            }
+        });
+        
+        // File upload interaction
+        const fileUploads = document.querySelectorAll('.file-upload');
+        fileUploads.forEach(upload => {
+            const input = upload.querySelector('input');
+            upload.addEventListener('click', () => input.click());
+            
+            input.addEventListener('change', () => {
+                if (input.files.length > 0) {
+                    upload.style.borderColor = 'var(--success)';
+                    upload.querySelector('i').className = 'fas fa-check-circle';
+                    upload.querySelector('i').style.color = 'var(--success)';
+                    upload.querySelector('p').textContent = input.files[0].name;
+                }
+            });
+            
+            // Drag and drop
+            upload.addEventListener('dragover', (e) => {
+                e.preventDefault();
+                upload.style.borderColor = 'var(--primary)';
+            });
+            
+            upload.addEventListener('dragleave', () => {
+                upload.style.borderColor = '#e2e8f0';
+            });
+            
+            upload.addEventListener('drop', (e) => {
+                e.preventDefault();
+                input.files = e.dataTransfer.files;
+                if (input.files.length > 0) {
+                    upload.style.borderColor = 'var(--success)';
+                    upload.querySelector('i').className = 'fas fa-check-circle';
+                    upload.querySelector('i').style.color = 'var(--success)';
+                    upload.querySelector('p').textContent = input.files[0].name;
+                }
+            });
+        });
+    </script>
+</body>
+</html>
