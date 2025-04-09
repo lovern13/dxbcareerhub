@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,7 +28,7 @@
             </div>
         </div>
     </header>
-    
+   
     <!-- Hero Section -->
     <section class="hero">
         <h1>Find Your Dream Job in Dubai</h1>
@@ -39,7 +40,7 @@
             </div>
         </div>
     </section>
-    
+   
     <!-- Main Content -->
     <div class="container">
         <h2 class="section-title" id="jobs">Featured Jobs in Dubai</h2>
@@ -67,7 +68,7 @@
                     <button class="apply-btn" onclick="openApplyModal('Senior Frontend Developer at Emirates Group')">Apply Now</button>
                 </div>
             </div>
-            
+           
             <!-- Job Card 2 -->
             <div class="job-card">
                 <div class="job-header">
@@ -90,7 +91,7 @@
                     <button class="apply-btn" onclick="openApplyModal('Backend Engineer at Emaar Properties')">Apply Now</button>
                 </div>
             </div>
-            
+           
             <!-- Job Card 3 -->
             <div class="job-card">
                 <span class="featured-badge">Featured</span>
@@ -114,7 +115,7 @@
                     <button class="apply-btn" onclick="openApplyModal('UX Designer at DP World')">Apply Now</button>
                 </div>
             </div>
-            
+           
             <!-- Job Card 4 -->
             <div class="job-card">
                 <div class="job-header">
@@ -137,7 +138,7 @@
                     <button class="apply-btn" onclick="openApplyModal('Data Scientist at ENOC')">Apply Now</button>
                 </div>
             </div>
-            
+           
             <!-- Job Card 5 -->
             <div class="job-card">
                 <div class="job-header">
@@ -160,7 +161,7 @@
                     <button class="apply-btn" onclick="openApplyModal('Mobile Developer at Commercial Bank of Dubai')">Apply Now</button>
                 </div>
             </div>
-            
+           
             <!-- Job Card 6 -->
             <div class="job-card">
                 <span class="featured-badge">Featured</span>
@@ -186,7 +187,8 @@
             </div>
         </div>
     </div>
-    
+   
+    <!-- Modals -->
     <!-- Login Modal -->
     <div class="modal" id="loginModal">
         <div class="modal-content">
@@ -210,7 +212,7 @@
             </div>
         </div>
     </div>
-    
+   
     <!-- Register Modal -->
     <div class="modal" id="registerModal">
         <div class="modal-content">
@@ -249,7 +251,7 @@
             </div>
         </div>
     </div>
-    
+   
     <!-- Apply Modal -->
     <div class="modal" id="applyModal">
         <div class="modal-content">
@@ -290,7 +292,7 @@
             </div>
         </div>
     </div>
-    
+   
     <!-- License Modal -->
     <div class="license-modal" id="licenseModal">
         <div class="license-content">
@@ -321,7 +323,7 @@ SOFTWARE.
             </pre>
         </div>
     </div>
-    
+   
     <!-- Footer -->
     <footer>
         <div class="footer-content">
@@ -370,12 +372,101 @@ SOFTWARE.
             &copy; 2025 DubaiCareerHub. All rights reserved.
         </div>
     </footer>
-    
+   
     <!-- License Button -->
     <button class="license-btn" onclick="openModal('licenseModal')">
         <i class="fas fa-balance-scale"></i> License
     </button>
-    
-    <script src="script.js"></script>
+   
+    <!-- Embedded JavaScript -->
+    <script>
+        // Modal Functions
+        function openModal(modalId) {
+            console.log("Opening modal:", modalId);
+            document.getElementById(modalId).style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+       
+        function closeModal(modalId) {
+            console.log("Closing modal:", modalId);
+            document.getElementById(modalId).style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+       
+        function openApplyModal(jobTitle) {
+            console.log("Applying for:", jobTitle);
+            document.getElementById('applyJobTitle').textContent = 'Apply for ' + jobTitle;
+            openModal('applyModal');
+        }
+       
+        function switchToRegister() {
+            closeModal('loginModal');
+            openModal('registerModal');
+        }
+       
+        function switchToLogin() {
+            closeModal('registerModal');
+            openModal('loginModal');
+        }
+
+        // Initialize event listeners when the DOM loads
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log("DOM fully loaded!");
+
+            // Login/Register buttons
+            document.getElementById('loginBtn').addEventListener('click', function() {
+                openModal('loginModal');
+            });
+           
+            document.getElementById('registerBtn').addEventListener('click', function() {
+                openModal('registerModal');
+            });
+
+            // File upload interactions
+            const fileUploads = document.querySelectorAll('.file-upload');
+            fileUploads.forEach(upload => {
+                const input = upload.querySelector('input');
+                upload.addEventListener('click', () => input.click());
+               
+                input.addEventListener('change', () => {
+                    if (input.files.length > 0) {
+                        upload.style.borderColor = 'var(--success)';
+                        upload.querySelector('i').className = 'fas fa-check-circle';
+                        upload.querySelector('i').style.color = 'var(--success)';
+                        upload.querySelector('p').textContent = input.files[0].name;
+                    }
+                });
+               
+                // Drag and drop
+                upload.addEventListener('dragover', (e) => {
+                    e.preventDefault();
+                    upload.style.borderColor = 'var(--primary)';
+                });
+               
+                upload.addEventListener('dragleave', () => {
+                    upload.style.borderColor = '#e2e8f0';
+                });
+               
+                upload.addEventListener('drop', (e) => {
+                    e.preventDefault();
+                    input.files = e.dataTransfer.files;
+                    if (input.files.length > 0) {
+                        upload.style.borderColor = 'var(--success)';
+                        upload.querySelector('i').className = 'fas fa-check-circle';
+                        upload.querySelector('i').style.color = 'var(--success)';
+                        upload.querySelector('p').textContent = input.files[0].name;
+                    }
+                });
+            });
+        });
+
+        // Close modals when clicking outside
+        window.addEventListener('click', function(event) {
+            if (event.target.classList.contains('modal')) {
+                closeModal(event.target.id);
+            }
+        });
+    </script>
 </body>
 </html>
+
