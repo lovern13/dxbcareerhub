@@ -40,8 +40,8 @@
 ## 🔗 Access the Project
 
 - 🌐 **Website**: https://dubaicareerhub.online
-- 📹 **Video Explainer**: 
-- 📘 **Documentation**: See 
+- 📹 **Video Explainer**: https://drive.google.com/file/d/1Sc974I7ReZLNpvA27pyMZOwr2hPf7oPd/view?usp=drive_link
+- 📘 **Documentation**: https://drive.google.com/file/d/1DLbwXSML5CO5Ru4l1GH4Z50UrynSdaAZ/view?usp=sharing
 - 🔧 **Script File**: setup.sh – Automates part of the setup process
 - 📂 **Server Files**: Located in `/var/www/html` on the EC2 instance
 
